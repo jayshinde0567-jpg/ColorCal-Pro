@@ -596,7 +596,7 @@ with c2:
                 cv2.line(overlay, (sc_x, sc_y-5), (sc_x, sc_y+5), (255,0,0), 2)
                 
             cv2.rectangle(overlay, (sc_x_start, sc_y_start), (sc_x_end, sc_y_end), (0, 255, 0), 3)
-            st.image(overlay, caption=f"Target Area: {eye_label}", width="stretch")
+            st.image(overlay, caption=f"Target Area: {eye_label}", use_column_width=True)
             
         with col_sc2:
             sc_roi = calibrated_rgb[sc_y_start:sc_y_end, sc_x_start:sc_x_end]
@@ -620,9 +620,9 @@ with c2:
             
             col_roi1, col_roi2 = st.columns(2)
             with col_roi1:
-                st.image(sc_roi, caption="AI Cropped Eye", width="stretch")
+                st.image(sc_roi, caption="AI Cropped Eye", use_column_width=True)
             with col_roi2:
-                st.image(mask_visual, caption="Skin & Glare Rejected", width="stretch")
+                st.image(mask_visual, caption="Skin & Glare Rejected", use_column_width=True)
                 
             if np.any(valid_mask):
                 valid_b = b_chan[valid_mask]
@@ -738,7 +738,7 @@ with c2:
                 data=pdf_bytes,
                 file_name="Clinical_Triage_Report.pdf",
                 mime="application/pdf",
-                width="stretch"
+                use_container_width=True
             )
             # ----------------------------------------
 
