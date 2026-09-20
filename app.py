@@ -550,6 +550,12 @@ with c2:
         
         # 100% AUTOMATED OPENCV EYE TARGETING
         gray = cv2.cvtColor(test_rgb, cv2.COLOR_RGB2GRAY)
+              import os
+        import urllib.request
+        
+        if not os.path.exists('haarcascade_eye.xml'):
+            urllib.request.urlretrieve('https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_eye.xml', 'haarcascade_eye.xml')
+            
         eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
         eyes = eye_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(40, 40))
         
