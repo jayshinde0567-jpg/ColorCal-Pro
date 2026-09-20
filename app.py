@@ -550,7 +550,7 @@ with c2:
         
         # 100% AUTOMATED OPENCV EYE TARGETING
         gray = cv2.cvtColor(test_rgb, cv2.COLOR_RGB2GRAY)
-              import os
+        import os
         import urllib.request
         
         if not os.path.exists('haarcascade_eye.xml'):
