@@ -174,6 +174,22 @@ with st.sidebar:
     patient_gender = st.selectbox("Gender", options=["Unspecified", "Male", "Female", "Other"])
     
     st.markdown("---")
+    st.markdown("### 🖨️ Printable ColorCard")
+    st.markdown("<p style='font-size:0.85rem; color:#4B5A65;'>Required for AI color calibration. Print this card in color and hold it next to the patient's face.</p>", unsafe_allow_html=True)
+    
+    try:
+        with open("ColorCal_Pro_Card_ArUco.png", "rb") as file:
+            st.download_button(
+                label="⬇️ Download Calibration Card",
+                data=file,
+                file_name="ColorCal_Pro_Card_Printable.png",
+                mime="image/png",
+                use_container_width=True
+            )
+    except FileNotFoundError:
+        st.markdown("<p style='font-size:0.8rem; color:red;'>Card file missing on server.</p>", unsafe_allow_html=True)
+
+    st.markdown("---")
     st.markdown("🔒 **Data Privacy:**")
     st.markdown("<p style='font-size:0.8rem; color:#4B5A65;'>Demographics are processed locally for PDF report generation and are <b>never</b> stored in any cloud database. 100% HIPAA/DPDP compliant.</p>", unsafe_allow_html=True)
 
